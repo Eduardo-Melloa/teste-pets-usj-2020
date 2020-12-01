@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <title> Clientes </title>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1>Cadastro de Pet do <span th:text="${cliente.nome}"></span></h1>
+
+        <form method="POST" action="/pet/cadastrarPet">
+
+            <input type="hidden" name="clienteId" id="clienteId" th:value="${cliente.id}">
+            <input type="hidden" name="id" id="id" th:value="${pet.id}">
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" class="form-control" name="nome" id="nome" th:value="${pet.nome}" required/> 
+            </div>
+
+            <div class="form-group">
+                <label for="idade">Idade:</label>
+                <input type="number" name="idade" id="idade" class="form-control" th:value="${pet.idade}" required>
+            </div>
+            <div class="form-group">
+                <label for="tipo">Tipo:</label>
+                <input type="text" class="form-control" name="tipo" id="tipo" th:value="${pet.tipo}" required/> 
+            </div>
+            <div class="form-group">
+                <label for="raca">Raça:</label>
+                <input type="text" class="form-control" name="raca" id="raca" th:value="${pet.raca}" required>
+                
+            </div>
+            
+            <div class="form-group">
+                <label for="descricao">Descrição:</label>
+                <textarea name="descricao" id="descricao" cols="30" rows="10" class="form-control"
+                th:inline="text">[[${pet.descricao}]]</textarea>
+            </div>
+
+            
+            <div>
+                <input type="submit" class="btn btn-success" value="Salvar">
+            </div>
+        </form>
+        <a class="btn btn-danger mt-2" th:href="@{/detalhes/{id}(id=${cliente.id})}"><i class="fas fa-chevron-circle-left"></i></a>
+    </div>
+
+    <script src="/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

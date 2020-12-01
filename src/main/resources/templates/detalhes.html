@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <title> Clientes </title>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1>Cliente: <span th:text="${cliente.nome}"></span></h1>
+        <h4 class="text-black-50">Telefone: <span th:text="${cliente.telefone}"></span></h4>
+        
+        <br>
+        
+        <h3>Pets:</h3>
+        <div class="row row-cols-1 row-cols-md-3" th:if="${listaPets != null}">
+            <div class="col mb-4" th:each="pet : ${listaPets}">
+                <div class="card h-100">
+                    <a class="text-right mr-2 mt-2" th:href="@{/pet/delete/{id}(id=${pet.id})}">
+                        <i class="text-danger fas fa-trash"></i>
+                    </a>
+                    <a class="d-block card-body" th:href="@{/pet/detalhes/{id}(id=${pet.id})}">
+                        <h5 class="card-title text-body" th:text="${pet.nome}"></h5>
+                        <p class="card-text text-muted" th:text="'Idade: ' + ${pet.idade}"></p>
+                        <p class="card-text text-secondary" th:text="${pet.tipo}"></p>
+                    </a>
+                    <a class="text-right mr-2 mb-2" th:href="@{/pet/editar/{id}(id=${pet.id})}">
+                        <i class="text-info fas fa-pen"></i>
+                    </a>
+                </div>
+            </div>
+            <a class="d-block col mb-4" th:href="@{../pet/cadastrarPet/{id}(id=${cliente.id})}">
+                <div class="card h-100">
+                    <svg style="font-size: 1rem; min-height: 100%; max-height: 200px;" viewBox="0 0 16 16" class="bi bi-plus"
+                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                    </svg>
+                </div>
+            </a>
+        </div>
+        <a class="btn btn-danger" href="/"><i class="fas fa-chevron-circle-left"></i></a>
+    </div>
+
+    <script src="/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

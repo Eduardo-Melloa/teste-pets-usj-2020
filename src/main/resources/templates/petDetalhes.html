@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <title> Clientes </title>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1>Cliente: <span th:text="${cliente.nome}"></span></h1>
+        <br>
+        <h2>Pet: <strong th:text="${pet.nome}"></strong></h2>
+        <div class="">
+            <p><strong>Idade: </strong><span th:text="${pet.idade}"></span></p>
+            <p><strong>Tipo: </strong><span th:text="${pet.tipo}"></span></p>
+            <p><strong>Raça: </strong><span th:text="${pet.raca}"></span></p>
+            <p><strong>Descrição: </strong><span th:text="${pet.descricao}"></span></p>
+        </div>
+        
+        <a class="btn btn-danger" th:href="@{/detalhes/{id}(id=${cliente.id})}"><i class="fas fa-chevron-circle-left"></i></a>
+    </div>
+
+    <script src="/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <title> Clientes </title>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-5">Agenda de Pets</h1>
+        
+        <a class="btn btn-primary mb-4" href="/cadastroClientes">Novo Cliente</a>
+        <a class="btn btn-secondary mb-4" href="/pesquisaCliente">Pesquisa Cliente</a>
+      
+
+        <h3>Lista de Clientes:</h3>
+        <ul class="list-group" th:if="${listaClientes != null}">
+
+            <div th:each="cliente : ${listaClientes}" >
+                <li class="list-group-item d-flex justify-content-between align-items-center text-right">
+                    <div class="">
+                        <a th:href="@{delete/{id}(id=${cliente.id})}" class="text-right mr-2 mt-2">
+                            <i class="text-danger fas fa-trash"></i>
+                        </a>
+                        <a th:href="@{/editar/{id}(id=${cliente.id})}" class="text-right mr-2 mb-2">
+                            <i class="text-info fas fa-pen"></i>
+                        </a>
+                    </div>
+                    <a class=" " th:href="@{/detalhes/{id}(id=${cliente.id})}">
+                        <span th:text="${cliente.nome}"></span>
+                        <sub class="text-black-50"  th:text="'(Telefone): ' + ${cliente.telefone}"></sub>
+                    </a>
+                </li>
+            </div>
+        </ul>
+
+    </div>
+
+    <script src="/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

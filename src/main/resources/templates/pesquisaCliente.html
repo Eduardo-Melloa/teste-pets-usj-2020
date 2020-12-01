@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <title>Pesquisa de Clientes</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Pesquisar Cliente</h1>
+            <form method="POST" action="/pesquisaCliente">
+                <!--<div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" name="nome" id="nome" th:value="${nome}">    
+                    </div>
+                -->
+                <div class="form-group">
+                    <input type="text" name="nome" id="nome" th:value="${nome}"> 
+                    <button class="fas fa-search" style="border-radius: 30px;background-color:dodgerblue ;height: 30px;width: 35px;"></button>
+                </div>         
+            </form>
+            <div>
+                <div class="border" th:if="${listaClientes != null}">
+                    <div class="row m-1" th:each="cliente : ${listaClientes}">
+                        <a th:href="@{/detalhes/{id}(id=${cliente.id})}" th:text="${cliente.nome}" class="col col-10"></a>
+                        <div class="col">
+                            <a th:href="@{/editar/{id}(id=${cliente.id})}" >
+                                <i class="text-info fas fa-pen"></i>
+                            </a>
+                            <a th:href="@{delete/{id}(id=${cliente.id})}" >
+                                <i class="text-danger fas fa-trash"></i>
+                            </a>
+                        </div>
+                        
+
+                    </div>
+                </div>
+            </div>
+        
+        
+    </div>
+    <script src="/js/jquery-3.5.1.slim.min.js" ></script>
+    <script src="/js/bootstrap.bundle.min.js" ></script>
+</body>
+</html>
